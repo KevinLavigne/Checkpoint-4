@@ -6,7 +6,7 @@ function Provider({ children }) {
   const [state, setState] = useState([]);
   const [state2, setState2] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
-
+  const [user, setUser] = useState();
   const handleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
@@ -20,6 +20,8 @@ function Provider({ children }) {
         setState2,
         isFormOpen,
         handleForm,
+        setUser,
+        user,
       }}
     >
       {children}

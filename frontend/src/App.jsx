@@ -13,7 +13,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Page1" element={<Page1 />} />
+        <Route path="/Projects" element={<Page1 />} />
         <Route path="/Page2" element={<Page2 />} />
         <Route path="/Page3" element={<Page3 />} />
         <Route path="*" element={<Error404 />} />

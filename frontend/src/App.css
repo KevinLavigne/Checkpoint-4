@@ -10,7 +10,9 @@
   --gris: #ECEFF1;
   background-color: var(--bleu);
 }
-
+.bg{
+  background-color: var(--bleu);
+}
 .bg-component{
   background-color: var(--indigo);
 }

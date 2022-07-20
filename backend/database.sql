@@ -381,6 +381,13 @@ VALUES (
         1
     );
 
+INSERT INTO
+    `checkpoint_4`.`personality_has_techno`(projet_id, techno_id)
+VALUES (1, 2), (1, 3), (2, 1), (2, 2), (2, 3),
+INSERT INTO
+    `checkpoint_4`.`personality_has_Projet`(personality_id, projet_id)
+VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 5), (2, 6), (2, 7), (2, 8), (3, 1), (3, 9), (3, 10), (3, 11);
+
 SET SQL_MODE = @OLD_SQL_MODE;
 
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

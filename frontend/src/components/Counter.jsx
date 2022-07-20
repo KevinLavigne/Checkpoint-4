@@ -34,8 +34,8 @@ function Formulaire() {
   };
 
   return (
-    <div className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex bg-gray-900/75">
-      <div className="absolute bg h-4/5 w-1/2 flex flex-col justify-between bg-slate-50 rounded-[16px]">
+    <div className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full inset-0 h-modal md:h-full justify-center items-center flex bg-gray-900/75">
+      <div className="absolute bg h-4/5 lg:w-1/2 w-5/6 flex flex-col justify-between bg-slate-50 rounded-[16px]">
         <div className="flex flex-col h-full w-full">
           <div className="absolute top-2 right-1 flex justify-self-start self-end">
             <button
@@ -52,7 +52,7 @@ function Formulaire() {
             </h1>
             <form className="flex flex-col w-full h-full">
               <input
-                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg lg:mb-6 md:mb-2"
+                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg mb-6 "
                 type="text"
                 name="fullname / prénom et nom"
                 placeholder="fullname"
@@ -60,7 +60,7 @@ function Formulaire() {
                 required
               />
               <input
-                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg lg:mb-6 md:mb-2"
+                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg mb-6 "
                 type="text"
                 name="mail address /adresse email"
                 placeholder="email"
@@ -68,7 +68,7 @@ function Formulaire() {
                 required
               />
               <input
-                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg lg:mb-6 md:mb-2"
+                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg mb-6 "
                 type="text"
                 name="object / objet"
                 placeholder="object"
@@ -76,7 +76,7 @@ function Formulaire() {
                 required
               />
               <textarea
-                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-4/5 w-11/12 ml-6 shadow-lg lg:mb-6 md:mb-2"
+                className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-4/5 w-11/12 ml-6 shadow-lg mb-6"
                 type="text"
                 name="message"
                 placeholder="Message to send / Message à transmettre"
@@ -92,7 +92,7 @@ function Formulaire() {
                   }}
                   type="submit"
                   required
-                  className="bg-component title shadow-lg text-white lg:text-xl md:text-base font-boldrounded-full hover:bg-green-300 h-4/5 w-4/5 flex justify-center items-center align-center rounded-[12px] lg:mb-8 md:mb-4"
+                  className="bg-component title shadow-lg text-xl md:text-base font-boldrounded-full hover:bg-green-300 h-4/5 w-4/5 flex justify-center items-center align-center rounded-[12px] mb-8"
                 >
                   Submit
                 </button>

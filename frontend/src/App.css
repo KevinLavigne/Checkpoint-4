@@ -5,12 +5,14 @@
 :root {
   --rouge: #AD343E;
   --indigo: #9DC3C2;
-  --black: #9DC3C2;
+  --black: #2A1F2D;
   --bleu: #4D7298;
   --gris: #ECEFF1;
   background-color: var(--bleu);
 }
-
+.bg{
+  background-color: var(--bleu);
+}
 .bg-component{
   background-color: var(--indigo);
 }

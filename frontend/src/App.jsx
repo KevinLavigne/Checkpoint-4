@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "@pages/Home";
 import NavBar from "@components/NavBar";
 import Page1 from "@pages/Projet";
-import Page2 from "@components/Counter";
+import Page2 from "@pages/Login";
 import Page3 from "@pages/Page3";
 import Error404 from "@pages/error404";
 import "./App.css";
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Projects" element={<Page1 />} />
-        <Route path="/Page2" element={<Page2 />} />
+        <Route path="/mysuperadminlogin" element={<Page2 />} />
         <Route path="/Page3" element={<Page3 />} />
         <Route path="*" element={<Error404 />} />
       </Routes>

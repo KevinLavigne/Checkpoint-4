@@ -7,7 +7,7 @@ function NavBar() {
         <li>Accueil</li>
       </NavLink>
       <NavLink to="/Page1">
-        <li>Page1</li>
+        <li>Projects</li>
       </NavLink>
       <NavLink to="/Page2">
         <li>Page2</li>

@@ -8,12 +8,9 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 
-SET
-    @OLD_FOREIGN_KEY_CHECKS = @ @FOREIGN_KEY_CHECKS,
-    FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS = 0;
 
 SET
-    @OLD_SQL_MODE = @ @SQL_MODE,
     SQL_MODE = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
@@ -106,7 +103,7 @@ CREATE TABLE
     IF NOT EXISTS `checkpoint_4`.`Experience` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `titre` VARCHAR(100) NOT NULL,
-        `description` VARCHAR(255) NOT NULL,
+        `description` LONGTEXT NOT NULL,
         `language_id` INT NOT NULL,
         PRIMARY KEY (`id`, `language_id`),
         UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
@@ -126,8 +123,8 @@ CREATE TABLE
         `titre` VARCHAR(100) NOT NULL,
         `img_link` LONGTEXT NOT NULL,
         `img_alt` VARCHAR(255) NOT NULL,
-        PRIMARY KEY (`id`, `language_id`),
-        UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+        PRIMARY KEY (`id`),
+        UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -186,7 +183,7 @@ INSERT INTO
     `checkpoint_4`.`personality` (
         id,
         Nom,
-        prénom,
+        prenom,
         lien_git,
         lien_linkedin,
         img_link,
@@ -199,7 +196,7 @@ VALUES (
         "https://github.com/KevinLavigne",
         "https://www.linkedin.com/in/lavignekevin/",
         "https://media-exp2.licdn.com/dms/image/C5603AQH9JerhMKAFog/profile-displayphoto-shrink_100_100/0/1649544967936?e=1663804800&v=beta&t=NuwPJztjyo8pZThm7Xme5svOkSecLU5V5-5LWXNuYY4",
-        "photo de profile linkedin de Kévin",
+        "photo de profile linkedin de Kévin"
     ), (
         2,
         "Grimoire",
@@ -359,7 +356,8 @@ INSERT INTO
         id,
         titre,
         description,
-        repo_link language_id
+        repo_link,
+        language_id
     )
 VALUES (
         1,
@@ -382,14 +380,9 @@ VALUES (
     );
 
 INSERT INTO
-    `checkpoint_4`.`personality_has_techno`(projet_id, techno_id)
-VALUES (1, 2), (1, 3), (2, 1), (2, 2), (2, 3),
+    `checkpoint_4`.`Projet_has_techno`(projet_id, techno_id)
+VALUES (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (2, 5), (2, 8), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9);
+
 INSERT INTO
     `checkpoint_4`.`personality_has_Projet`(personality_id, projet_id)
 VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 5), (2, 6), (2, 7), (2, 8), (3, 1), (3, 9), (3, 10), (3, 11);
-
-SET SQL_MODE = @OLD_SQL_MODE;
-
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

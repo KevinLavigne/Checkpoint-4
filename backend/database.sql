@@ -138,7 +138,9 @@ CREATE TABLE
         `id` INT NOT NULL,
         `titre` VARCHAR(100) NOT NULL,
         `description` LONGTEXT NOT NULL,
-        `repo_link` LONGTEXT NOT NULL,
+        `repo_link` VARCHAR(255) NOT NULL,
+        `img_link` LONGTEXT NOT NULL,
+        `img_alt` VARCHAR(100) NOT NULL,
         `language_id` INT NOT NULL,
         PRIMARY KEY (`id`, `language_id`),
         INDEX `fk_Projet_language1_idx` (`language_id` ASC) VISIBLE,
@@ -170,8 +172,8 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS `checkpoint_4`.`personality_has_Projet` (
-        `personality_id` INT NOT NULL,
         `Projet_id` INT NOT NULL,
+        `personality_id` INT NOT NULL,
         PRIMARY KEY (`personality_id`, `Projet_id`),
         INDEX `fk_personality_has_Projet_Projet1_idx` (`Projet_id` ASC) VISIBLE,
         INDEX `fk_personality_has_Projet_personality1_idx` (`personality_id` ASC) VISIBLE,
@@ -357,25 +359,33 @@ INSERT INTO
         titre,
         description,
         repo_link,
+        img_link,
+        img_alt,
         language_id
     )
 VALUES (
         1,
-        "error404",
+        "Error404",
         "1er project qui a eu lieu 2 semaines après le debut de notre formation et as durée 2 semaine nous étions en equipe de 4. Nous n'avions pas envore commencer le javascript ceci est donc un site html css basique.",
         "https://github.com/KevinLavigne/projet1-error404",
+        "https://i.ibb.co/DV3g0ZP/Fire-Shot-Capture-003-Page-d-accueil-127-0-0-1.png",
+        "image de la page d'accueil du projet 1",
         1
     ), (
         2,
         "Team Rocket",
         "2ème projet celui-ci a eu lieu 1 mois et demi après le début de la fomation. Ce projet aura durée 1 mois et étais la marque du début de notre apprentisage de React et la 1er exploatation du des méthode Ajax avec le fetch et la consomation d'api. Il c'est réaliser en équipe de 5." "",
         "https://github.com/WildCodeSchool/2022-03-RemoteJS-Erreur404-teamrocket",
+        "https://i.ibb.co/VJbVFcK/Fire-Shot-Capture-005-Team-Rocket-localhost.png",
+        "image de la page d'accueil du projet 2",
         1
     ), (
         3,
         "RookiesCMS",
         "3ème et dernier projet de groupe de cette formation de 6 mois. Il aura durée 2 mois et as été réaliser pour une entreprise externe à la Wild Code School. Notre objectif etais de créer de toute piece un site vitrine avec un éspace administrateur de type CMS. Cela aura été un excelent challenge technique metant en place une consomation de notre db pour tous les affichages et contenu du front-end. le 2ème challenge etais de pouvoir gérér de multiple language et d'en ajouté si necsessaire. P.S.: Une grande source d'inspiration pour ce PortFolio qui dispose d'un CMS. ",
         "https://github.com/WildCodeSchool/2022-03-JS-Remote-404-Rookies-CMS",
+        "https://i.ibb.co/XVPRSQw/Fire-Shot-Capture-006-Rookies-Company-localhost.png",
+        "image de la page d'accueil du projet 2",
         1
     );
 
@@ -384,5 +394,5 @@ INSERT INTO
 VALUES (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (2, 5), (2, 8), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9);
 
 INSERT INTO
-    `checkpoint_4`.`personality_has_Projet`(personality_id, projet_id)
+    `checkpoint_4`.`personality_has_Projet`(projet_id, personality_id)
 VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 5), (2, 6), (2, 7), (2, 8), (3, 1), (3, 9), (3, 10), (3, 11);

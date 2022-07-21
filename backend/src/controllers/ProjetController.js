@@ -20,12 +20,38 @@ class ProjetController {
       projet = projets[0];
       const personality = await models.personality.findByProject(req.params.id);
 
-      projets[0].personality = personality[0];
-
       const techno = await models.techno.findByProject(req.params.id);
 
       projet[0].personality = personality[0];
       projet[0].techno = techno[0];
+
+      res.status(200).json(projet);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
+
+  static browseFullProjets = async (req, res) => {
+    try {
+      let projet = "";
+      const projets = await models.projet.findAll();
+      projet = projets[0];
+      if (projet) {
+        const personality = await Promise.all(
+          projet.map((proj) =>
+            models.personality.findByProject(proj.id).then((final) => final[0])
+          )
+        );
+        const techno = await Promise.all(
+          projet.map((proj) =>
+            models.techno.findByProject(proj.id).then((final) => final[0])
+          )
+        );
+        for (let i = 0; i <= projets.length; i++) {
+          projet[i].personality = personality[i];
+          projet[i].techno = techno[i];
+        }
+      }
 
       res.status(200).json(projet);
     } catch (err) {

@@ -25,6 +25,26 @@ class personalityController {
       });
   };
 
+  static fullProfile = async (req, res) => {
+    try {
+      let home = "";
+      const profile = await models.personality.find(1);
+      home = profile[0];
+
+      const experiences = await models.experience.findAll();
+
+      home[0].experiences = experiences[0];
+
+      const techno = await models.techno.findAll();
+
+      home[0].techno = techno[0];
+
+      res.status(200).json(home);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
+
   static read = (req, res) => {
     models.personality
       .find(req.params.id)

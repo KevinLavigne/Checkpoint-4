@@ -12,7 +12,7 @@ function NavBar() {
         <NavLink to="/">
           <li>Accueil</li>
         </NavLink>
-        <NavLink to="/Page1">
+        <NavLink to="/Projects">
           <li>Projects</li>
         </NavLink>
         <button type="button" onClick={() => handleForm()}>

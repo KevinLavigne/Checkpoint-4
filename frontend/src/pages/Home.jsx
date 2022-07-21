@@ -1,4 +1,12 @@
+// import axios from "axios";
+import { useState } from "react";
+
+import linkedin from "@assets/linkedin .png";
+import github from "@assets/logo-github.png";
+
 export default function Home() {
+  const [data, setData] = useState("");
+  console.warn(data, setData);
   return (
     <section className="flex flex-col justify-center">
       <div className="flex flex-col justify-center gap-10">
@@ -15,12 +23,22 @@ export default function Home() {
             <h2>Nom</h2>
             <h2>Prénom</h2>
             <div className="flex">
-              <img src="" alt="logo Github" />
-              <h2>Lien Github</h2>
+              <a href="https://github.com/KevinLavigne">
+                <img
+                  src={github}
+                  alt="logo Github"
+                  className="aspect-square w-[55%]"
+                />
+              </a>
             </div>
             <div className="flex">
-              <img src="" alt="logo Linkedin" />
-              <h2>Lien Linkedin</h2>
+              <a href="https://www.linkedin.com/in/lavignekevin/">
+                <img
+                  src={linkedin}
+                  alt="logo Linkedin"
+                  className="aspect-square w-[55%]"
+                />
+              </a>
             </div>
           </div>
           <div>

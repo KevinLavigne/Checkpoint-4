@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "@pages/Home";
 import NavBar from "@components/NavBar";
 import Page1 from "@pages/Projet";
-import Page2 from "@pages/Login";
-import Page3 from "@pages/Page3";
+import Page3 from "@pages/Admin";
 import Error404 from "@pages/error404";
 import "./App.css";
+import Login from "@pages/Login";
 
 function App() {
   return (
@@ -14,8 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Projects" element={<Page1 />} />
-        <Route path="/mysuperadminlogin" element={<Page2 />} />
-        <Route path="/Page3" element={<Page3 />} />
+        <Route path="/SuperSecretAdminAccess" element={<Login />} />
+        <Route path="/Admin" element={<Page3 />} />
+
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>

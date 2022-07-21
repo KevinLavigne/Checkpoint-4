@@ -24,8 +24,11 @@ router.get("/personalityByProjet/:id", PersonalityController.browseByProjet);
 
 router.get("/projets", ProjetController.browse);
 router.get("/fullProject/:id", ProjetController.browseFullProjet);
+router.get("/fullProjects", ProjetController.browseFullProjets);
 
 router.get("/experiences", ExperienceController.browse);
+
+router.get("/home", PersonalityController.fullProfile);
 
 router.get("/technos", TechnoController.browse);
 router.get("/technoByProjet/:id", TechnoController.browseByProjet);

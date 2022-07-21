@@ -1,4 +1,6 @@
 const express = require("express");
+const { Authorization } = require("./services/user");
+const { VerifyEmail } = require("./services/verify");
 
 const {
   ItemController,
@@ -7,6 +9,7 @@ const {
   ProjetController,
   TechnoController,
   ExperienceController,
+  UserController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -32,5 +35,11 @@ router.get("/home", PersonalityController.fullProfile);
 
 router.get("/technos", TechnoController.browse);
 router.get("/technoByProjet/:id", TechnoController.browseByProjet);
+
+router.post("/user/login", VerifyEmail, UserController.login);
+router.post("/user/create", UserController.add);
+router.get("/checkuser", Authorization, UserController.browse);
+router.get("/checkuser/:email", VerifyEmail, UserController.read);
+router.get("/user/logout", Authorization, UserController.logout);
 
 module.exports = router;

@@ -28,7 +28,7 @@ export default function Home() {
           <img
             src={data?.img_link}
             alt={data?.img_alt}
-            className=" rounded-[100%] aspect-square place-items-center w-[35%] h-[25%] "
+            className=" rounded-[100%] aspect-square my-auto place-items-center w-[35%] h-[25%] "
           />
           <div className="flex flex-col gap-10 self-center w-[25%]">
             <h2 className=" text-2xl">{data?.Nom}</h2>

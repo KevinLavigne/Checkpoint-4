@@ -66,10 +66,8 @@ class personalityController {
 
     // TODO validations (length, format...)
 
-    personality.id = parseInt(req.params.id, 10);
-
     models.personality
-      .update(personality)
+      .update(personality, personality.id)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -99,16 +97,16 @@ class personalityController {
       });
   };
 
-  static delete = (req, res) => {
-    models.personality
-      .delete(req.params.id)
-      .then(() => {
-        res.sendStatus(204);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
+  static delete = async (req, res) => {
+    try {
+      await models.personality.deleteDependancy(req.params.id);
+
+      await models.personality.delete(req.params.id);
+      res.sendStatus(204);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
   };
 }
 

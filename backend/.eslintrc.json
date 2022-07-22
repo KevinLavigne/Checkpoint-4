@@ -19,6 +19,7 @@
     ],
     "prefer-destructuring":"off",
     "no-plusplus":"off",
-    "no-param-reassign":"off"
+    "no-param-reassign":"off",
+    "jsx-a11y/label-has-associated-control":"off"
   }
 }

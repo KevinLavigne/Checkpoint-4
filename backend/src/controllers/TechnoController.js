@@ -46,10 +46,8 @@ class TechnoController {
 
     // TODO validations (length, format...)
 
-    techno.id = parseInt(req.params.id, 10);
-
     models.techno
-      .update(techno)
+      .update(techno, techno.id)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -79,16 +77,17 @@ class TechnoController {
       });
   };
 
-  static delete = (req, res) => {
-    models.techno
-      .delete(req.params.id)
-      .then(() => {
-        res.sendStatus(204);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
+  static delete = async (req, res) => {
+    try {
+      await models.techno.deleteDependancy(req.params.id);
+
+      await models.techno.delete(req.params.id);
+
+      res.sendStatus(204);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
   };
 }
 

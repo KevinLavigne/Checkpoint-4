@@ -108,7 +108,7 @@ CREATE TABLE
         PRIMARY KEY (`id`, `language_id`),
         UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
         INDEX `fk_Experience_language1_idx` (`language_id` ASC) VISIBLE,
-        CONSTRAINT `fk_Experience_language1` FOREIGN KEY (`language_id`) REFERENCES `mydb`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Experience_language1` FOREIGN KEY (`language_id`) REFERENCES `checkpoint_4`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -135,7 +135,7 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS `checkpoint_4`.`Projet` (
-        `id` INT NOT NULL,
+        `id` INT NOT NULL AUTO_INCREMENT,
         `titre` VARCHAR(100) NOT NULL,
         `description` LONGTEXT NOT NULL,
         `repo_link` VARCHAR(255) NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE
         `language_id` INT NOT NULL,
         PRIMARY KEY (`id`, `language_id`),
         INDEX `fk_Projet_language1_idx` (`language_id` ASC) VISIBLE,
-        CONSTRAINT `fk_Projet_language1` FOREIGN KEY (`language_id`) REFERENCES `mydb`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Projet_language1` FOREIGN KEY (`language_id`) REFERENCES `checkpoint_4`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -160,8 +160,8 @@ CREATE TABLE
         PRIMARY KEY (`Projet_id`, `techno_id`),
         INDEX `fk_Projet_has_techno_techno1_idx` (`techno_id` ASC) VISIBLE,
         INDEX `fk_Projet_has_techno_Projet_idx` (`Projet_id` ASC) VISIBLE,
-        CONSTRAINT `fk_Projet_has_techno_Projet` FOREIGN KEY (`Projet_id`) REFERENCES `mydb`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_Projet_has_techno_techno1` FOREIGN KEY (`techno_id`) REFERENCES `mydb`.`techno` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Projet_has_techno_Projet` FOREIGN KEY (`Projet_id`) REFERENCES `checkpoint_4`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_Projet_has_techno_techno1` FOREIGN KEY (`techno_id`) REFERENCES `checkpoint_4`.`techno` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -177,8 +177,8 @@ CREATE TABLE
         PRIMARY KEY (`personality_id`, `Projet_id`),
         INDEX `fk_personality_has_Projet_Projet1_idx` (`Projet_id` ASC) VISIBLE,
         INDEX `fk_personality_has_Projet_personality1_idx` (`personality_id` ASC) VISIBLE,
-        CONSTRAINT `fk_personality_has_Projet_personality1` FOREIGN KEY (`personality_id`) REFERENCES `mydb`.`personality` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_personality_has_Projet_Projet1` FOREIGN KEY (`Projet_id`) REFERENCES `mydb`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_personality_has_Projet_personality1` FOREIGN KEY (`personality_id`) REFERENCES `checkpoint_4`.`personality` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_personality_has_Projet_Projet1` FOREIGN KEY (`Projet_id`) REFERENCES `checkpoint_4`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO

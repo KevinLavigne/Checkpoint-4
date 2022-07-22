@@ -10,6 +10,7 @@ const {
   TechnoController,
   ExperienceController,
   UserController,
+  MaillerController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -22,24 +23,35 @@ router.delete("/items/:id", ItemController.delete);
 
 router.get("/languages", LanguageController.browse);
 
-router.get("/personalitys", PersonalityController.browse);
+router.get("/personality", PersonalityController.browse);
 router.get("/personalityByProjet/:id", PersonalityController.browseByProjet);
+router.put("/personality", PersonalityController.edit);
+router.post("/personality", PersonalityController.add);
+router.delete("/personality/:id", PersonalityController.delete);
 
 router.get("/projets", ProjetController.browse);
 router.get("/fullProject/:id", ProjetController.browseFullProjet);
-router.get("/fullProjects", ProjetController.browseFullProjets);
+router.get("/Projet", ProjetController.browseFullProjets);
+router.put("/Projet", ProjetController.edit);
+router.post("/Projet", ProjetController.add);
+router.delete("/Projet/:id", ProjetController.delete);
 
-router.get("/experiences", ExperienceController.browse);
+router.get("/experience", ExperienceController.browse);
 
 router.get("/home", PersonalityController.fullProfile);
 
-router.get("/technos", TechnoController.browse);
+router.get("/techno", TechnoController.browse);
 router.get("/technoByProjet/:id", TechnoController.browseByProjet);
+router.put("/techno", TechnoController.edit);
+router.post("/techno", TechnoController.add);
+router.delete("/techno/:id", TechnoController.delete);
 
 router.post("/user/login", VerifyEmail, UserController.login);
 router.post("/user/create", UserController.add);
 router.get("/checkuser", Authorization, UserController.browse);
 router.get("/checkuser/:email", VerifyEmail, UserController.read);
 router.get("/user/logout", Authorization, UserController.logout);
+
+router.post("/sendEmail", MaillerController.sendMail);
 
 module.exports = router;

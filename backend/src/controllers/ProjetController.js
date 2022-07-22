@@ -49,9 +49,15 @@ class ProjetController {
             models.techno.findByProject(proj.id).then((final) => final[0])
           )
         );
-        for (let i = 0; i <= projets.length; i++) {
+
+        for (let i = 0; i < projets.length; i++) {
           projet[i].personality = personality[i];
           projet[i].techno = techno[i];
+        }
+        if (projet[projet.length - 1]) {
+          projet[projet.length - 1].personality =
+            personality[projet.length - 1];
+          projet[projet.length - 1].techno = techno[projet.length - 1];
         }
       }
 
@@ -121,16 +127,19 @@ class ProjetController {
       });
   };
 
-  static delete = (req, res) => {
-    models.projet
-      .delete(req.params.id)
-      .then(() => {
-        res.sendStatus(204);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
+  static delete = async (req, res) => {
+    try {
+      await models.projet.deleteDependancyTechno(req.params.id);
+
+      await models.projet.deleteDependancyPersonality(req.params.id);
+
+      await models.projet.delete(req.params.id);
+
+      res.sendStatus(204);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
   };
 }
 

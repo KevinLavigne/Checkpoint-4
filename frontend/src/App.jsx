@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/:language/Home" element={<Home />} />
         <Route path="/:language/Projects" element={<Page1 />} />
-        <Route path="/SuperSecretAdminAccess" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/Admin" element={<Page3 />} />
         <Route path="" element={<Navigate to="FR/Home" />} />
       </Routes>

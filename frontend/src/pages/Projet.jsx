@@ -8,7 +8,7 @@ import ExportContext from "../contexts/Context";
 
 function Projet() {
   const { activeLanguage } = useContext(ExportContext.Context);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     axios
@@ -47,18 +47,19 @@ function Projet() {
                         Les Techno utiliser
                       </p>
                       <ul className="flex flex-col  justify-center">
-                        {projet.techno.map((tech) => (
-                          <li className="flex flex-col gap-5 mb-5 justify-center items-center">
-                            <p className="text-2xl font-semibold">
-                              {tech.titre}
-                            </p>
-                            <img
-                              src={tech.img_link}
-                              alt={tech.img_alt}
-                              className="w-[50%] "
-                            />
-                          </li>
-                        ))}
+                        {projet.techno &&
+                          projet.techno.map((tech) => (
+                            <li className="flex flex-col gap-5 mb-5 justify-center items-center">
+                              <p className="text-2xl font-semibold">
+                                {tech.titre}
+                              </p>
+                              <img
+                                src={tech.img_link}
+                                alt={tech.img_alt}
+                                className="w-[50%] "
+                              />
+                            </li>
+                          ))}
                       </ul>
                     </div>
                     <div className="my-5 lg:w-[65%]">
@@ -66,7 +67,7 @@ function Projet() {
                         La team
                       </p>
                       <ul className="flex flex-col gap-5 lg:gap-10 justify-center">
-                        {projet &&
+                        {projet.personality &&
                           projet.personality.map((perso) => (
                             <li className="flex gap-5">
                               <img

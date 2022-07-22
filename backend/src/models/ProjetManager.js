@@ -30,6 +30,20 @@ class ProjetManager extends AbstractManager {
       [item, item.id]
     );
   }
+
+  deleteDependancyTechno(id) {
+    return this.connection.query(
+      `delete from projet_has_techno where Projet_id = ?`,
+      [id]
+    );
+  }
+
+  deleteDependancyPersonality(id) {
+    return this.connection.query(
+      `delete from personality_has_projet where projet_id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = ProjetManager;

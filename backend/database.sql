@@ -108,7 +108,7 @@ CREATE TABLE
         PRIMARY KEY (`id`, `language_id`),
         UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
         INDEX `fk_Experience_language1_idx` (`language_id` ASC) VISIBLE,
-        CONSTRAINT `fk_Experience_language1` FOREIGN KEY (`language_id`) REFERENCES `mydb`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Experience_language1` FOREIGN KEY (`language_id`) REFERENCES `checkpoint_4`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -135,7 +135,7 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS `checkpoint_4`.`Projet` (
-        `id` INT NOT NULL,
+        `id` INT NOT NULL AUTO_INCREMENT,
         `titre` VARCHAR(100) NOT NULL,
         `description` LONGTEXT NOT NULL,
         `repo_link` VARCHAR(255) NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE
         `language_id` INT NOT NULL,
         PRIMARY KEY (`id`, `language_id`),
         INDEX `fk_Projet_language1_idx` (`language_id` ASC) VISIBLE,
-        CONSTRAINT `fk_Projet_language1` FOREIGN KEY (`language_id`) REFERENCES `mydb`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Projet_language1` FOREIGN KEY (`language_id`) REFERENCES `checkpoint_4`.`language` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -160,8 +160,8 @@ CREATE TABLE
         PRIMARY KEY (`Projet_id`, `techno_id`),
         INDEX `fk_Projet_has_techno_techno1_idx` (`techno_id` ASC) VISIBLE,
         INDEX `fk_Projet_has_techno_Projet_idx` (`Projet_id` ASC) VISIBLE,
-        CONSTRAINT `fk_Projet_has_techno_Projet` FOREIGN KEY (`Projet_id`) REFERENCES `mydb`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_Projet_has_techno_techno1` FOREIGN KEY (`techno_id`) REFERENCES `mydb`.`techno` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_Projet_has_techno_Projet` FOREIGN KEY (`Projet_id`) REFERENCES `checkpoint_4`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_Projet_has_techno_techno1` FOREIGN KEY (`techno_id`) REFERENCES `checkpoint_4`.`techno` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -177,8 +177,8 @@ CREATE TABLE
         PRIMARY KEY (`personality_id`, `Projet_id`),
         INDEX `fk_personality_has_Projet_Projet1_idx` (`Projet_id` ASC) VISIBLE,
         INDEX `fk_personality_has_Projet_personality1_idx` (`personality_id` ASC) VISIBLE,
-        CONSTRAINT `fk_personality_has_Projet_personality1` FOREIGN KEY (`personality_id`) REFERENCES `mydb`.`personality` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_personality_has_Projet_Projet1` FOREIGN KEY (`Projet_id`) REFERENCES `mydb`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_personality_has_Projet_personality1` FOREIGN KEY (`personality_id`) REFERENCES `checkpoint_4`.`personality` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_personality_has_Projet_Projet1` FOREIGN KEY (`Projet_id`) REFERENCES `checkpoint_4`.`Projet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 INSERT INTO
@@ -307,6 +307,21 @@ VALUES (
         "Assistant formateur développeur web",
         "A partir du 1 septembre 2022, j'aurai le plaisir de pouvoir transmettre cette passion qui est la mienne ainsi que le savoir que j'ai aquérie lors de ma session de formation, a des personnes qui comme moi a l'époque ou j'ai commencer ma formation n'avait pas la moindre idée de l'étendue de connaissance qu'est la programmation. Cela me permetra pars la même occasion de continuer a approfondir mes connaissance sur les techno que j'utilise actuellement et de commencer a en utiliser de nouvelles.",
         1
+    ), (
+        4,
+        "Serveur en restauration",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        2
+    ), (
+        5,
+        "Formation développeur web by WildCodeSchool",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        2
+    ), (
+        6,
+        "Assistant formateur développeur web",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        2
     );
 
 INSERT INTO
@@ -374,7 +389,7 @@ VALUES (
     ), (
         2,
         "Team Rocket",
-        "2ème projet celui-ci a eu lieu 1 mois et demi après le début de la fomation. Ce projet aura durée 1 mois et étais la marque du début de notre apprentisage de React et la 1er exploatation du des méthode Ajax avec le fetch et la consomation d'api. Il c'est réaliser en équipe de 5." "",
+        "2ème projet celui-ci a eu lieu 1 mois et demi après le début de la fomation. Ce projet aura durée 1 mois et étais la marque du début de notre apprentisage de React et la 1er exploatation du des méthode Ajax avec le fetch et la consomation d'api. Il c'est réaliser en équipe de 5.",
         "https://github.com/WildCodeSchool/2022-03-RemoteJS-Erreur404-teamrocket",
         "https://i.ibb.co/VJbVFcK/Fire-Shot-Capture-005-Team-Rocket-localhost.png",
         "image de la page d'accueil du projet 2",
@@ -387,15 +402,39 @@ VALUES (
         "https://i.ibb.co/XVPRSQw/Fire-Shot-Capture-006-Rookies-Company-localhost.png",
         "image de la page d'accueil du projet 2",
         1
+    ), (
+        4,
+        "Error404",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "https://github.com/KevinLavigne/projet1-error404",
+        "https://i.ibb.co/DV3g0ZP/Fire-Shot-Capture-003-Page-d-accueil-127-0-0-1.png",
+        "image de la page d'accueil du projet 1",
+        2
+    ), (
+        5,
+        "Team Rocket",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "https://github.com/WildCodeSchool/2022-03-RemoteJS-Erreur404-teamrocket",
+        "https://i.ibb.co/VJbVFcK/Fire-Shot-Capture-005-Team-Rocket-localhost.png",
+        "image de la page d'accueil du projet 2",
+        2
+    ), (
+        6,
+        "RookiesCMS",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "https://github.com/WildCodeSchool/2022-03-JS-Remote-404-Rookies-CMS",
+        "https://i.ibb.co/XVPRSQw/Fire-Shot-Capture-006-Rookies-Company-localhost.png",
+        "image de la page d'accueil du projet 2",
+        2
     );
 
 INSERT INTO
     `checkpoint_4`.`Projet_has_techno`(projet_id, techno_id)
-VALUES (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (2, 5), (2, 8), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9);
+VALUES (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (2, 5), (2, 8), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9), (4, 2), (4, 3), (5, 1), (5, 2), (5, 3), (5, 5), (5, 8), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6), (6, 7), (6, 8), (6, 9);
 
 INSERT INTO
     `checkpoint_4`.`personality_has_Projet`(projet_id, personality_id)
-VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 5), (2, 6), (2, 7), (2, 8), (3, 1), (3, 9), (3, 10), (3, 11);
+VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 5), (2, 6), (2, 7), (2, 8), (3, 1), (3, 9), (3, 10), (3, 11), (4, 1), (4, 2), (4, 3), (4, 4), (5, 1), (5, 5), (5, 6), (5, 7), (5, 8), (6, 1), (6, 9), (6, 10), (6, 11);
 
 INSERT INTO
     `checkpoint_4`.`user`(id, email, hashed_password)

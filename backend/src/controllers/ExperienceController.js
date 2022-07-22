@@ -3,7 +3,7 @@ const models = require("../models");
 class ExperienceController {
   static browse = (req, res) => {
     models.experience
-      .findAll()
+      .findAll(req.params.language)
       .then(([rows]) => {
         res.send(rows);
       })
@@ -31,10 +31,6 @@ class ExperienceController {
 
   static edit = (req, res) => {
     const experience = req.body;
-
-    // TODO validations (length, format...)
-
-    experience.id = parseInt(req.params.id, 10);
 
     models.experience
       .update(experience)

@@ -27,7 +27,7 @@ function Login() {
       )
       .then((res) => {
         setUser(res.data);
-        navigate("/dashboard/");
+        navigate("/Admin");
       })
       .catch((err) => console.error(err));
   };

@@ -34,7 +34,9 @@ class ProjetController {
   static browseFullProjets = async (req, res) => {
     try {
       let projet = "";
-      const projets = await models.projet.findAll();
+      const projets = await models.projet.findAllByLanguage(
+        req.params.language
+      );
       projet = projets[0];
       if (projet) {
         const personality = await Promise.all(
@@ -80,10 +82,16 @@ class ProjetController {
 
     // TODO validations (length, format...)
 
-    projet.id = parseInt(req.params.id, 10);
-
     models.projet
-      .update(projet)
+      .update({
+        id: projet.id,
+        titre: projet.titre,
+        description: projet.description,
+        repo_link: projet.repo_link,
+        img_link: projet.img_link,
+        img_alt: projet.img_alt,
+        language_id: projet.language_id,
+      })
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);

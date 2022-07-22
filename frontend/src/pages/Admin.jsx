@@ -1,23 +1,37 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
+import AdminPersonality from "@components/AdminPersonality";
+import AdminExperience from "@components/AdminExperience";
+import AdminTechno from "@components/AdminTechno";
+import AdminProjet from "@components/AdminProjet";
+import ExportContext from "../contexts/Context";
 
 function Page3() {
-  const [pg3, setPg3] = useState([]);
-  console.warn(`${pg3} ${setPg3}`);
+  const { user } = useContext(ExportContext.Context);
+  const [area, setArea] = useState("");
+  if (!user) {
+    return <Navigate to="/" />;
+  }
   return (
-    <div>
-      <div>
-        <select>
-          <option value="0">select a component to modify</option>
-          <option value="1">experiences</option>
-          <option value="2">techno</option>
-          <option value="3">personality</option>
-          <option value="4">projet</option>
-        </select>
-        <select>
-          <option value="0"> select a the element to modify </option>
-        </select>
-      </div>
+    <div className="flex flex-col items-center gap-5">
+      <select
+        className="rounded-xl p-2"
+        onChange={(e) => {
+          setArea(e.target.value);
+        }}
+      >
+        <option value="0">select a component to modify</option>
+        <option value="experience">experiences</option>
+        <option value="techno">techno</option>
+        <option value="personality">personality</option>
+        <option value="Projet">projet</option>
+      </select>
+      {area === "personality" ? <AdminPersonality /> : null}
+      {area === "techno" ? <AdminTechno /> : null}
+      {area === "experience" ? <AdminExperience /> : null}
+      {area === "Projet" ? <AdminProjet /> : null}
     </div>
   );
 }
+
 export default Page3;

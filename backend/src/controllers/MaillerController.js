@@ -3,7 +3,7 @@ require("dotenv").config();
 
 class sendMailer {
   static sendMail = async (req, res) => {
-    const { email, message, fullname, object } = req.body;
+    const { email, message, fullname, object } = req.body[0];
 
     const transporter = await nodemailer.createTransport({
       host: process.env.SMTP_SENDIN,

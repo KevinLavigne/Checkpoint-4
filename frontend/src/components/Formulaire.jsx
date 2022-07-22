@@ -11,7 +11,6 @@ function Formulaire() {
       fullname: "",
       object: "",
       email: "",
-      reception: "lavigne.kevin02@gmail.com",
       message: "",
     },
   ]);
@@ -54,24 +53,24 @@ function Formulaire() {
               <input
                 className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg mb-6 "
                 type="text"
-                name="fullname / prénom et nom"
-                placeholder="fullname"
+                name="fullname"
+                placeholder="fullname / prénom et nom"
                 onChange={(e) => editData(e.target.name, e.target.value)}
                 required
               />
               <input
                 className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg mb-6 "
                 type="text"
-                name="mail address /adresse email"
-                placeholder="email"
+                name="email"
+                placeholder="email address /adresse email"
                 onChange={(e) => editData(e.target.name, e.target.value)}
                 required
               />
               <input
                 className="lg:text-xl md:text-base bg-gray-100 border-2 border-gray-300 rounded-lg h-1/3 w-11/12 ml-6 shadow-lg mb-6 "
                 type="text"
-                name="object / objet"
-                placeholder="object"
+                name="object"
+                placeholder="object / objet"
                 onChange={(e) => editData(e.target.name, e.target.value)}
                 required
               />

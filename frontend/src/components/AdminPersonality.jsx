@@ -1,26 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 function AdminPersonality() {
   const [data, setData] = useState([]);
   const [adminTouch, setAdminTouch] = useState({});
   const [isAdd, setIsAdd] = useState(false);
 
   const editData = (area, value) => {
-    if (adminTouch !== "add") {
-      const newData = [...data];
-      newData[adminTouch][area] = value;
-      setData(newData);
-    } else {
-      toAdd[0][area] = value;
-      setData(toAdd);
-    }
+    const newData = [...data];
+    newData[adminTouch][area] = value;
+    setData(newData);
   };
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/personality`)
       .then((response) => {
         setData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.warn(error);
@@ -54,7 +49,6 @@ function AdminPersonality() {
   };
   const handleSubmitDelete = (e) => {
     e.preventDefault();
-    console.log(data[adminTouch]);
     axios
       .delete(
         `${import.meta.env.VITE_BACKEND_URL}/personality/${
@@ -92,7 +86,6 @@ function AdminPersonality() {
           } else {
             setIsAdd(false);
             setAdminTouch(e.target.value);
-            console.log(data);
           }
         }}
       >
@@ -177,7 +170,7 @@ function AdminPersonality() {
         </div>
         <div>
           <label className="flex flex-col text-gray-900 font-bold mb-2 ml-6 mt-2">
-            Description de l'image
+            Description de l&apos;image
             <input
               value={data[adminTouch]?.img_alt}
               className="bg-gray-100 border-2 border-gray-300 rounded-lg px-2 self-center py-1 w-4/5 "

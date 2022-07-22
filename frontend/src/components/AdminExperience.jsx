@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 function AdminExperience() {
   const [data, setData] = useState([]);
   const [adminTouch, setAdminTouch] = useState({});
   const [isAdd, setIsAdd] = useState(false);
+  console.warn(isAdd, adminTouch);
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/experience`)
       .then((response) => {
         setData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.warn(error);
@@ -27,7 +28,6 @@ function AdminExperience() {
         } else {
           setIsAdd(false);
           setAdminTouch(e.target.value);
-          console.log(data);
         }
       }}
     >

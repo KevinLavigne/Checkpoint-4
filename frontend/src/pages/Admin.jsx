@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AdminPersonality from "@components/AdminPersonality";
 import AdminExperience from "@components/AdminExperience";
 import AdminTechno from "@components/AdminTechno";
@@ -12,7 +12,7 @@ function Page3() {
       <select
         className="rounded-xl p-2"
         onChange={(e) => {
-          setArea(e.target.value), console.log(area);
+          setArea(e.target.value);
         }}
       >
         <option value="0">select a component to modify</option>

@@ -17,6 +17,13 @@ class ProjetManager extends AbstractManager {
     );
   }
 
+  findAllByLanguage(language) {
+    return this.connection.query(
+      `select * from  ${this.table} where language_id = ?`,
+      [language]
+    );
+  }
+
   update(item) {
     return this.connection.query(
       `update ${ProjetManager.table} set ? where id = ?`,

@@ -3,7 +3,7 @@ const models = require("../models");
 class ExperienceController {
   static browse = (req, res) => {
     models.experience
-      .findAll()
+      .findAll(req.params.language)
       .then(([rows]) => {
         res.send(rows);
       })

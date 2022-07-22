@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import ExportContext from "../contexts/Context";
 
 function AdminExperience() {
+  const { activeLanguage } = useContext(ExportContext.Context);
   const [data, setData] = useState([]);
   const [adminTouch, setAdminTouch] = useState({});
   const [isAdd, setIsAdd] = useState(false);
@@ -13,14 +15,16 @@ function AdminExperience() {
   };
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/experience`)
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/experience/${activeLanguage.id}`
+      )
       .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
         console.warn(error);
       });
-  }, []);
+  }, [activeLanguage]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isAdd === true) {
@@ -59,6 +63,7 @@ function AdminExperience() {
         console.warn("No !");
       });
   };
+
   return (
     <div className="w-1/2 flex flex-col">
       <select
@@ -107,7 +112,7 @@ function AdminExperience() {
         <div>
           <label className="flex flex-col text-gray-900 font-bold mb-2 ml-6 mt-2">
             description
-            <input
+            <textarea
               value={data[adminTouch]?.description}
               className="bg-gray-100 border-2 border-gray-300 rounded-lg px-2 self-center py-1 w-4/5 "
               type="text"

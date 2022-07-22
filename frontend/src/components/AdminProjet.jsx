@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import ExportContext from "../contexts/Context";
 
 function AdminProjet() {
   const [data, setData] = useState([]);
   const [adminTouch, setAdminTouch] = useState({});
   const [isAdd, setIsAdd] = useState(false);
+  const { activeLanguage } = useContext(ExportContext.Context);
 
   const editData = (area, value) => {
     const newData = [...data];
@@ -14,14 +16,14 @@ function AdminProjet() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/projet`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/projet/${activeLanguage.id}`)
       .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
         console.warn(error);
       });
-  }, []);
+  }, [activeLanguage]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -112,7 +114,7 @@ function AdminProjet() {
         <div>
           <label className="flex flex-col text-gray-900 font-bold mb-2 ml-6 mt-2">
             description
-            <input
+            <textarea
               value={data[adminTouch]?.description}
               className="bg-gray-100 border-2 border-gray-300 rounded-lg px-2 self-center py-1 w-4/5 "
               type="text"

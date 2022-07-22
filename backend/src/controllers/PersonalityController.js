@@ -31,7 +31,7 @@ class personalityController {
       const profile = await models.personality.find(1);
       home = profile[0];
 
-      const experiences = await models.experience.findAll();
+      const experiences = await models.experience.findAll(req.params.language);
 
       home[0].experiences = experiences[0];
 

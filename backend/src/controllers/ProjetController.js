@@ -34,7 +34,9 @@ class ProjetController {
   static browseFullProjets = async (req, res) => {
     try {
       let projet = "";
-      const projets = await models.projet.findAll();
+      const projets = await models.projet.findAllByLanguage(
+        req.params.language
+      );
       projet = projets[0];
       if (projet) {
         const personality = await Promise.all(

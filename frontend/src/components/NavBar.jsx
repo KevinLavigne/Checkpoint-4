@@ -4,23 +4,34 @@ import ExportContext from "../contexts/Context";
 import Formulaire from "./Formulaire";
 
 function NavBar() {
-  const { handleForm, isFormOpen } = useContext(ExportContext.Context);
+  const {
+    handleForm,
+    isFormOpen,
+    activeLanguage,
+    setActiveLanguage,
+    languages,
+  } = useContext(ExportContext.Context);
   return (
     <>
       {isFormOpen && <Formulaire />}
       <ul className="flex justify-between py-5 px-10 text-3xl bg-gris mb-8">
-        <NavLink to="/">
+        <NavLink to={`/${activeLanguage && activeLanguage?.language}/Home`}>
           <li>Accueil</li>
         </NavLink>
-        <NavLink to="/Projects">
+        <NavLink to={`/${activeLanguage && activeLanguage.language}/Projects`}>
           <li>Projects</li>
         </NavLink>
         <button type="button" onClick={() => handleForm()}>
           <li>Contactez-moi</li>
         </button>
-        <select className="bg-gris">
-          <option value="1"> FR </option>
-          <option value="2"> EN </option>
+        <select
+          className="bg-gris"
+          onChange={(e) => setActiveLanguage(languages[e.target.value - 1])}
+        >
+          {languages &&
+            languages.map((langue) => (
+              <option value={langue.id}>{langue.language}</option>
+            ))}
         </select>
       </ul>
     </>

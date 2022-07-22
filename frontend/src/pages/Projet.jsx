@@ -1,24 +1,27 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import linkedin from "@assets/linkedin .png";
 import github from "@assets/logo-github.png";
 
+import ExportContext from "../contexts/Context";
+
 function Projet() {
+  const { activeLanguage } = useContext(ExportContext.Context);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/fullProjects`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/Projet/${activeLanguage.id}`)
       .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
         console.warn(error);
       });
-  }, []);
+  }, [activeLanguage]);
   return (
-    <section>
+    <section className="mb-5">
       <div className="flex flex-col justify-center gap-10">
         {data &&
           data.map((projet) => (
@@ -37,7 +40,7 @@ function Projet() {
                   </a>
                 </div>
                 <div className="my-5 lg:w-1/2">
-                  <p>{projet.description}</p>
+                  <p className="text-2xl font-medium">{projet.description}</p>
                   <div className="my-5 flex flex-col lg:flex-row   ">
                     <div className="my-5 lg:w-[35%] mr-5">
                       <p className="text-center mb-5 title font-bold text-2xl">
@@ -46,7 +49,7 @@ function Projet() {
                       <ul className="flex flex-col  justify-center">
                         {projet.techno.map((tech) => (
                           <li className="flex flex-col gap-5 mb-5 justify-center items-center">
-                            <p className="text-xl font-semibold">
+                            <p className="text-2xl font-semibold">
                               {tech.titre}
                             </p>
                             <img

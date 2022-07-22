@@ -10,6 +10,13 @@ class ExperienceManager extends AbstractManager {
     );
   }
 
+  findAll(language) {
+    return this.connection.query(
+      `select * from  ${this.table} where language_id = ?`,
+      [language]
+    );
+  }
+
   update(experience) {
     return this.connection.query(
       `update ${ExperienceManager.table} set ? where id = ?`,

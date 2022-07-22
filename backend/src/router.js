@@ -29,19 +29,19 @@ router.put("/personality", PersonalityController.edit);
 router.post("/personality", PersonalityController.add);
 router.delete("/personality/:id", PersonalityController.delete);
 
-router.get("/projets", ProjetController.browse);
+router.get("/projets/:language", ProjetController.browse);
 router.get("/fullProject/:id", ProjetController.browseFullProjet);
-router.get("/Projet", ProjetController.browseFullProjets);
+router.get("/Projet/:language", ProjetController.browseFullProjets);
 router.put("/Projet", ProjetController.edit);
 router.post("/Projet", ProjetController.add);
 router.delete("/Projet/:id", ProjetController.delete);
 
-router.get("/experience", ExperienceController.browse);
+router.get("/experience/:language", ExperienceController.browse);
 router.put("/experience", ExperienceController.edit);
 router.post("/experience", ExperienceController.add);
 router.delete("/experience/:id", ExperienceController.delete);
 
-router.get("/home", PersonalityController.fullProfile);
+router.get("/home/:language", PersonalityController.fullProfile);
 
 router.get("/techno", TechnoController.browse);
 router.get("/technoByProjet/:id", TechnoController.browseByProjet);

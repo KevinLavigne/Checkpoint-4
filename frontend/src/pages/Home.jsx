@@ -1,22 +1,25 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import linkedin from "@assets/linkedin .png";
 import github from "@assets/logo-github.png";
 
+import ExportContext from "../contexts/Context";
+
 export default function Home() {
+  const { activeLanguage } = useContext(ExportContext.Context);
   const [data, setData] = useState("");
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/home`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/home/${activeLanguage.id}`)
       .then((response) => {
         setData(response.data[0]);
       })
       .catch((error) => {
         console.warn(error);
       });
-  }, []);
+  }, [activeLanguage]);
 
   return (
     <section className="flex flex-col justify-center">
@@ -31,8 +34,8 @@ export default function Home() {
             className=" rounded-[100%] aspect-square my-auto place-items-center w-[35%] h-[25%] "
           />
           <div className="flex flex-col gap-10 self-center w-[25%]">
-            <h2 className=" text-2xl">{data?.Nom}</h2>
-            <h2 className="text-2xl">{data?.Prenom}</h2>
+            <h2 className=" text-2xl font-semibold">{data?.Nom}</h2>
+            <h2 className="text-2xl font-semibold">{data?.Prenom}</h2>
             <div className="flex">
               <a href={data?.lien_git}>
                 <img
@@ -53,13 +56,13 @@ export default function Home() {
             </div>
           </div>
           <div className="w-[125%]">
-            <p className="title font-semibold text-2xl"> Mes experiences </p>
+            <p className="title font-semibold text-3xl"> Mes experiences </p>
             <ul className="gap-10 ">
               {data &&
                 data.experiences.map((exp) => (
                   <li className="my-5">
-                    <p className=" font-semibold text-2xl">{exp.titre}</p>
-                    <p className="pl-5 font-semibold text-md ">
+                    <p className=" font-semibold text-2xl mb-2">{exp.titre}</p>
+                    <p className="pl-5 font-medium text-xl ">
                       {exp.description}
                     </p>
                   </li>

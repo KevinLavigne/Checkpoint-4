@@ -37,6 +37,9 @@ router.post("/Projet", ProjetController.add);
 router.delete("/Projet/:id", ProjetController.delete);
 
 router.get("/experience", ExperienceController.browse);
+router.put("/experience", ExperienceController.edit);
+router.post("/experience", ExperienceController.add);
+router.delete("/experience/:id", ExperienceController.delete);
 
 router.get("/home", PersonalityController.fullProfile);
 

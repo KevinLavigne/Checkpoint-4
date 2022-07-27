@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "frontend":"cd frontend && npm start",
+    "backend":"cd backend && nodemon index.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run frontend\"",
+    "heroku-postbuild": "cd frontend && npm install && npm run build",
     "setup": "npm i && husky install && npm --prefix ./frontend i && npm --prefix ./backend i",
-    "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./frontend run dev\" \"npm --prefix ./backend run dev\"",
+    "dev2": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./frontend run dev\" \"npm --prefix ./backend run dev\"",
     "dev-front": "npm --prefix ./frontend run dev",
     "dev-back": "npm --prefix ./backend run dev",
     "lint": "npm --prefix ./frontend run lint && npm --prefix ./backend run lint",

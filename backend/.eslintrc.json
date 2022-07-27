@@ -20,6 +20,8 @@
     "prefer-destructuring":"off",
     "no-plusplus":"off",
     "no-param-reassign":"off",
-    "jsx-a11y/label-has-associated-control":"off"
+    "jsx-a11y/label-has-associated-control":"off",
+    "no-path-concat":"off",
+    "prefer-template":"off"
   }
 }

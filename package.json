@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "frontend":"cd frontend && npm start",
-    "backend":"cd backend && npm start",
+    "frontend":"cd frontend && npm run start",
+    "backend":"cd backend && npm run start",
     "start": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
     "heroku-postbuild": "concurrently --kill-others-on-fail \"cd backend && npm install\" \"cd frontend && npm install && npm run build\"",
     "setup": "npm i && husky install && npm --prefix ./frontend i && npm --prefix ./backend i",

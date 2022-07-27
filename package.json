@@ -6,7 +6,7 @@
   "scripts": {
     "frontend":"cd frontend && npm start",
     "backend":"cd backend && nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
+    "start": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
     "heroku-postbuild": "concurrently --kill-others-on-fail \"cd backend && npm install\" \"cd frontend && npm install && npm run build\"",
     "setup": "npm i && husky install && npm --prefix ./frontend i && npm --prefix ./backend i",
     "dev2": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./frontend run dev\" \"npm --prefix ./backend run dev\"",

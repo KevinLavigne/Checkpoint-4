@@ -10,7 +10,7 @@
     "dev-back": "npm --prefix ./backend run dev",
     "lint": "npm --prefix ./frontend run lint && npm --prefix ./backend run lint",
     "fix": "npm --prefix ./frontend run fix && npm --prefix ./backend run fix",
-    "build": "npm --prefix ./client run build"
+    "build": "npm --prefix ./frontend run build"
   },
   "keywords": [],
   "author": "Wild Code School",
